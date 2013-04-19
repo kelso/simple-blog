@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blog</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1><%= link_to "Rails Blog", root_path %> &mdash; Články o Ruby on Rails</h1>
+  </div>
+
+  <div class="right-side">
+    <h3>Kategórie</h3>
+    <ul>
+      <% Category.all.each do |category| %>
+        <li><%= link_to category.name, category %></li>
+      <% end %>
+    </ul>
+
+    <h3>Viac</h3>
+    <ul>
+      <li><%= link_to "O tomto blogu", "#" %></li>
+      <li><%= link_to "Kontakt na mňa", "#" %></li>
+    </ul>
+  </div>
+
+  <div class="left-side">
+    <%= yield %>
+  </div>
+
+  <div class="clear"></div>
+</div>
+
+</body>
+</html>
